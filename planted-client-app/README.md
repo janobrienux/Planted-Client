@@ -1,46 +1,52 @@
-# Getting Started with Create React App
+PLANTED
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Overview 
 
-## Available Scripts
+Planted is a web application that makes taking care of your plants easier! It provides a way to track the plants you have at home by adding them into the application, managing and updating their care, as well as a community to connect with other plant enthusiasts. Planted will require users to create an account in order to manage their plants. The goal of Planted is to help users track the care of their plants as well as gain insight from others who can help them keep their plants thriving. Planted is supposed to make having plants fun and accessible for everyone! 
 
-In the project directory, you can run:
 
-### `npm start`
+Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* Ability to create a user 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+* Ability to add, update, and delete a plant 
 
-### `npm test`
+* Ability to add, update, and delete comments on users plant posts
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* Home screen with information for users who are interested in obtaining plants but aren't sure where to start. 
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Goals
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To provide users with a solution to keep track of the plants they own and a community to help them care for them. It's so easy to forget to water your plants and planted is the plant task management system that won't let you forget. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+MVP 
 
-### `npm run eject`
+Implement user login information, creating, updating, delting plant information. Allowing users to comment on other users plant post and offer a community where all can share their love of plants. 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Backend
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* Build a database with 3 tables (users, plants, comments)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+* Implement a working controller for full CRUD functionality
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Front-End
 
-## Learn More
+* Set up React front-end file architecture
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* Create a well-designed front-end experience focusing on user accessibility 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* Utilize responsive styling 
+
+* ANT design, Styled Components, SASS 
+
+* Connect data from server to render the data to React components
+
+Time Estimates
+
+* Back End Server 20 hrs
+
+* Front End 20 hrs
+
+* Front End Styling 15 hrs 
+
