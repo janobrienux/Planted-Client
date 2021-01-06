@@ -1,34 +1,29 @@
 import { Component } from 'react';
 import SignUp  from './SignUp';
+import Login from './Login';
 
 
 type AuthProps ={
   updateToken: (newToken: string) => void;
 }
 
-type UserState = {
-  showLogin: boolean;
+type AuthState = {
 }
-export default class Auth extends Component<AuthProps, UserState> {
+export default class Auth extends Component<AuthProps, AuthState> {
  
-loginToggle = (e: any) => {
-  e.preventDefault();
-  if(this.state.showLogin === false) {
-    return this.setState({
-      showLogin: true,
-    })
-  }
-  if (this.state.showLogin === true) {
-    return this.setState({
-      showLogin: false,
-    });
-  }
+constructor(props: AuthProps) {
+  super(props);
+  this.state = {
+    holder: 'placeholder'
+  };
 }
 render() {
   return(
     <div>
       <SignUp updateToken={this.props.updateToken} />
+      <br/>
+      <Login setToken={this.props.updateToken}/>
     </div>
   )
-}
-}  
+} 
+} 
