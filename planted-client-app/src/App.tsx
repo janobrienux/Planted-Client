@@ -1,26 +1,38 @@
 import React, {Component} from 'react';
 import './App.css';
 import Auth from './components/auth/Auth';
-
+import PlantsCreate from './components/plants/PlantsCreate';
 
 type AppState = {
   token: string,
-
 }
-
-export default class App extends Component<{}, AppState> {
-  constructor(props:any) {
+interface Props {
+  token: string | null
+}
+export default class App extends Component<{}, Props, AppState> {
+  constructor(props:AppState) {
     super(props);
     this.state = {
-      token: ''
+      token: localStorage.getItem('token') ? localStorage.getItem('token'): ''
+    }
+    console.log(this.state.token)
+  }
+
+  componentDidMount = () => {
+    if(localStorage.getItem('token')) {
+      this.setState({
+        token: localStorage.getItem('token')
+      });
     }
   }
-  updateToken = (newToken: string)=> {
-    localStorage.setItem('token', newToken)
+
+  updateToken = (newToken: string) => {
+    localStorage.setItem('token', newToken); 
     this.setState({
-        token: newToken
-    })
+        token: newToken    
+      })
 }
+
 clearToken = ()=> {
   localStorage.clear();
   this.setState({
@@ -32,6 +44,7 @@ clearToken = ()=> {
 return (
   <div className='app'>
     <Auth updateToken={this.updateToken.bind(this)}/>
+    <PlantsCreate token={this.state.token}/>
   </div>
 )
   }

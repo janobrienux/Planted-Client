@@ -1,7 +1,9 @@
 import  { Component } from 'react';
-import TextField from '@material-ui/core/TextField';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import { colors } from '@material-ui/core';
+// import styled from 'styled-components';
+
+// const Form = styled.form`
+//   width: 100%;
+// `;
 
 // const useStyles = makeStyles((theme: Theme) =>
 //   createStyles({
@@ -31,7 +33,7 @@ interface Props  {
   updateToken: (token: string) => void
 }
 export default class SignUp extends Component<Props, SignUpState> {
-constructor(props: any) {
+constructor(props: Props) {
   super(props)
   this.state = {
     firstName:'',
@@ -43,7 +45,7 @@ constructor(props: any) {
   }
 }
 
-handleSubmit = (e: any) => {
+handleSubmit = (e: React.SyntheticEvent) => {
   e.preventDefault();
   //fetch and set value
   const firstName: string = this.state.firstName;
@@ -55,7 +57,7 @@ handleSubmit = (e: any) => {
 
   // console.log('this.state.firstName', firstName);
   const url: string = 'http://localhost:4000/user/register';
-  const bodyObj: any = {
+  const bodyObj:  SignUpState ={
     firstName,
     lastName,
     email,
@@ -75,6 +77,7 @@ handleSubmit = (e: any) => {
   })
   .then(res => res.json())
   .then(data => {
+    this.props.updateToken(data.token)
     console.log('submit data', data)
     console.log('data.user', data.user)
   });
@@ -86,48 +89,53 @@ handleSubmit = (e: any) => {
 render() {
   return (
 <div>
-        <h1>Signup</h1>
+  <div>
+    <h1>Hello, Friend!
+      One step closer to channeling your green thumb
+    </h1>
+  </div>
+        <h1>Create Account</h1>
         <form onSubmit={this.handleSubmit}>
           <input
             placeholder="first name"
             value={this.state.firstName}
-            onChange={(e: any) => this.setState({ firstName: e.target.value })}
+            onChange={(e: React.FormEvent<HTMLInputElement>) => this.setState({ firstName: e.currentTarget.value })}
           />
           <br />
           <input
             placeholder="last name"
             value={this.state.lastName}
-            onChange={(e: any) => this.setState({ lastName: e.target.value })}
+            onChange={(e: React.FormEvent<HTMLInputElement>) => this.setState({ lastName: e.currentTarget.value })}
           />
           <br />
           <input
             type="email"
             placeholder="email"
             value={this.state.email}
-            onChange={(e: any) => this.setState({ email: e.target.value })}
+            onChange={(e: React.FormEvent<HTMLInputElement>) => this.setState({ email: e.currentTarget.value })}
           />
           <br />
           <input
             type="password"
             placeholder="password"
             value={this.state.password}
-            onChange={(e: any) => this.setState({ password: e.target.value })}
+            onChange={(e: React.FormEvent<HTMLInputElement>) => this.setState({ password: e.currentTarget.value })}
           />
           <br />
            <input
             type="profileImg"
             placeholder="profileImg"
             value={this.state.profileImg}
-            onChange={(e: any) => this.setState({ profileImg: e.target.value })}
+            onChange={(e: React.FormEvent<HTMLInputElement>) => this.setState({ profileImg: e.currentTarget.value })}
           />
           <br />
           <input
             placeholder="user/admin"
             value={this.state.userRole}
-            onChange={(e: any) => this.setState({ userRole: e.target.value })}
+            onChange={(e: React.FormEvent<HTMLInputElement>) => this.setState({ userRole: e.currentTarget.value })}
           />
           <br />
-          <button>Submit</button>
+          <button>SIGN UP</button>
         </form>
       </div>
   )
