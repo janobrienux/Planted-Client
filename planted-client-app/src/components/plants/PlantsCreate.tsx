@@ -1,4 +1,6 @@
 import { Component } from "react";
+import Button from '@material-ui/core/Button';
+// import IconButton from '@material-ui/core/IconButton';
 
 type PlantState = {
   plantName: string;
@@ -10,7 +12,7 @@ type PlantState = {
 };
 
 interface Props {
-token: (newToken:string) => void;
+token: string | null;
 }
 
 export default class PlantCreate extends Component<Props, PlantState> {
@@ -25,6 +27,11 @@ export default class PlantCreate extends Component<Props, PlantState> {
       isThriving: true,
     };
   }
+  singleFileChangedHandler = (e: any) => {
+    this.setState({
+     file: e.target.files[0]
+    });
+}
 
   handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
@@ -55,9 +62,11 @@ export default class PlantCreate extends Component<Props, PlantState> {
     })
       .then((res) => res.json())
       .then((data) => {
+      //  this.setState(data)
         console.log(data);
       });
   };
+
 
   render() {
     return (
@@ -71,10 +80,26 @@ export default class PlantCreate extends Component<Props, PlantState> {
           />
           <br />
           <input
+        accept="image/*"
+        className=''
+        id="contained-button-file"
+        multiple
+        type="file"
+        onChange={this.singleFileChangedHandler}
+      />
+      <label htmlFor="contained-button-file">
+        {/* <Button variant="contained" color="primary" component="span">
+          Upload
+        </Button> */}
+      </label>
+          {/* <input
             placeholder="plant image"
             value={this.state.file}
-            onChange={(e: React.FormEvent<HTMLInputElement>) => this.setState({ file: e.currentTarget.value })}
-          />
+            onChange={this.singleFileChangedHandler}
+            // onChange=
+            // {(e: React.FormEvent<HTMLInputElement>)
+            //    => this.setState({ file: e.currentTarget.value })}
+          /> */}
           <br />
           <input
             type="temperature"
@@ -100,15 +125,15 @@ export default class PlantCreate extends Component<Props, PlantState> {
           />
           <br />
           <h3>Is your plant thriving?</h3>
-          <button className="trueBtn" color="primary" onClick={() => this.setState({ isThriving: true })}>
+          {/* <button className="trueBtn" color="primary" onClick={() => this.setState({ isThriving: true })}>
             True
           </button>
           <button className="falseBtn" color="secondary" onClick={() => this.setState({ isThriving: false })}>
             False
-          </button>
+          </button> */}
           <br/>
           <button>Add Plant</button>
-        </form>
+      </form>
       </div>
     );
   }

@@ -6,21 +6,31 @@ import PlantsCreate from './components/plants/PlantsCreate';
 type AppState = {
   token: string,
 }
-// interface Props {
-//   token: string
-// }
-export default class App extends Component<{}, AppState> {
+interface Props {
+  token: string | null
+}
+export default class App extends Component<{}, Props, AppState> {
   constructor(props:AppState) {
     super(props);
     this.state = {
-      token: ''
+      token: localStorage.getItem('token') ? localStorage.getItem('token'): ''
+    }
+    console.log(this.state.token)
+  }
+
+  componentDidMount = () => {
+    if(localStorage.getItem('token')) {
+      this.setState({
+        token: localStorage.getItem('token')
+      });
     }
   }
-  updateToken () {
-    localStorage.getItem('token') 
+
+  updateToken = (newToken: string) => {
+    localStorage.setItem('token', newToken); 
     this.setState({
-        token: ''
-    })
+        token: newToken    
+      })
 }
 
 clearToken = ()=> {
@@ -34,7 +44,7 @@ clearToken = ()=> {
 return (
   <div className='app'>
     <Auth updateToken={this.updateToken.bind(this)}/>
-    <PlantsCreate token={this.updateToken}/>
+    <PlantsCreate token={this.state.token}/>
   </div>
 )
   }

@@ -47,7 +47,7 @@ interface LoginProps  {
       .then(data => {
         console.log('submit data', data)
         console.log('data.user', data.user)
-        this.props.setToken(data.sessionToken)
+        this.props.setToken(data.token)
       })
     };
   

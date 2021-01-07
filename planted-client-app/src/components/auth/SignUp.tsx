@@ -77,6 +77,7 @@ handleSubmit = (e: React.SyntheticEvent) => {
   })
   .then(res => res.json())
   .then(data => {
+    this.props.updateToken(data.token)
     console.log('submit data', data)
     console.log('data.user', data.user)
   });

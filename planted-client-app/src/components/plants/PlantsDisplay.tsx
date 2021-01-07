@@ -2,7 +2,7 @@
 import PlantsCreate from './PlantsCreate';
 
 interface PlantProps {
- token: (newToken: string) => void;
+ token:  string | null 
 }
 
 const CreatePlant = (props: PlantProps) => {
