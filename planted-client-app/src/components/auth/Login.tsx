@@ -1,8 +1,10 @@
 import {Component} from 'react';
+import {History} from 'history'
 
 
 interface LoginProps  {
     setToken: (token: string) => void;
+    history:History
   }  
   type LoginState = {
     email: string;

@@ -1,10 +1,12 @@
 import { Component } from 'react';
 import SignUp  from './SignUp';
 import Login from './Login';
+import {History} from 'history'
 
 
 type AuthProps ={
   updateToken: (newToken: string) => void;
+  history:History
 }
 
 type AuthState = {
@@ -20,9 +22,9 @@ constructor(props: AuthProps) {
 render() {
   return(
     <div>
-      <SignUp updateToken={this.props.updateToken} />
+      <SignUp updateToken={this.props.updateToken} history={this.props.history} />
       <br/>
-      <Login setToken={this.props.updateToken}/>
+      <Login setToken={this.props.updateToken} history={this.props.history} />
     </div>
   )
 } 

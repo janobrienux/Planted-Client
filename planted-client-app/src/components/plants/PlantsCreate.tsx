@@ -1,10 +1,10 @@
-import { Component } from "react";
+import { Component, MouseEvent } from "react";
 import Button from '@material-ui/core/Button';
 // import IconButton from '@material-ui/core/IconButton';
 
 type PlantState = {
   plantName: string;
-  file: string;
+  plantImg: string;
   temperature: string;
   waterFrequency: string;
   lastWatering: string;
@@ -12,7 +12,9 @@ type PlantState = {
 };
 
 interface Props {
+// plantCreate: any,
 token: string | null;
+//  fetchPlants:()=> void
 }
 
 export default class PlantCreate extends Component<Props, PlantState> {
@@ -20,72 +22,92 @@ export default class PlantCreate extends Component<Props, PlantState> {
     super(props);
     this.state = {
       plantName: "",
-      file: "",
+     plantImg: "",
       temperature: "",
       waterFrequency: "",
       lastWatering: "",
       isThriving: true,
     };
   }
-  singleFileChangedHandler = (e: any) => {
-    this.setState({
-     file: e.target.files[0]
-    });
-}
-
+  
   handleSubmit = (e: React.SyntheticEvent) => {
+    // console.log('oh hi mark')
     e.preventDefault();
     //fetch and set value
-    const plantName: string = this.state.plantName;
-    const file: string = this.state.file;
-    const temperature: string = this.state.temperature;
-    const waterFrequency: string = this.state.waterFrequency;
-    const lastWatering: string = this.state.lastWatering;
-    const isThriving: boolean = this.state.isThriving;
-
+    const plantData = new FormData();
+    plantData.append('plantName',  this.state.plantName)
+     plantData.append('image', this.state.plantImg)
+     plantData.append('temperature', this.state.temperature)
+    plantData.append('waterFrequency', this.state.waterFrequency)
+     plantData.append('lastWatering', this.state.lastWatering)
+     plantData.append('isThriving',  JSON.stringify(this.state.isThriving))
+    
     const url: string = "http://localhost:4000/plants/create";
-    const bodyObj: PlantState = {
-      plantName,
-      file,
-      temperature,
-      waterFrequency,
-      lastWatering,
-      isThriving,
-    };
+    // const bodyObj: PlantState = {
+    //   plantName,
+    //   plantImg,
+    //   temperature,
+    //   waterFrequency,
+    //   lastWatering,
+    //   isThriving,
+    // };
     fetch(url, {
       method: "POST",
+      body: plantData,
       headers: new Headers({
-         "Content-Type": "application/json",
+        //  "Content-Type": "application/json",
         'Authorization': `${this.props.token}`,
       }),
-      body: JSON.stringify(bodyObj),
     })
-      .then((res) => res.json())
+    .then((res) => res.json())
       .then((data) => {
-      //  this.setState(data)
+       this.setState({
+         plantName: "",
+         temperature:"",
+         waterFrequency:"",
+         lastWatering:"",
+         isThriving:true,
+       })
         console.log(data);
+       
       });
   };
 
+  handleTrueButton(e: MouseEvent) {
+    e.preventDefault();
+    this.setState({ isThriving: true })
+  }
+  handleFalseButton(e: MouseEvent) {
+    e.preventDefault();
+    this.setState({ isThriving: false })
+  }
+
+  singleFileChangedHandler = (e: any) => {
+    this.setState({
+    plantImg: e.target.files[0]
+
+    });
+}
+  //form.addEventListener('submit', (event) => {event.preventDefault(); this.submitForm()});
 
   render() {
     return (
       <div>
         <h1>Add a new plant</h1>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit}  >
           <input
             placeholder="plant name"
             value={this.state.plantName}
-            onChange={(e: React.FormEvent<HTMLInputElement>) => this.setState({ plantName: e.currentTarget.value })}
+            onChange={(e: any) => this.setState({ plantName: e.currentTarget.value })}
           />
           <br />
           <input
         accept="image/*"
         className=''
         id="contained-button-file"
+        onChange={this.singleFileChangedHandler}
         multiple
         type="file"
-        onChange={this.singleFileChangedHandler}
       />
       <label htmlFor="contained-button-file">
         {/* <Button variant="contained" color="primary" component="span">
@@ -125,12 +147,14 @@ export default class PlantCreate extends Component<Props, PlantState> {
           />
           <br />
           <h3>Is your plant thriving?</h3>
-          {/* <button className="trueBtn" color="primary" onClick={() => this.setState({ isThriving: true })}>
+
+
+          <button className="trueBtn" onClick={this.handleTrueButton.bind(this)}>
             True
           </button>
-          <button className="falseBtn" color="secondary" onClick={() => this.setState({ isThriving: false })}>
+          <button className="falseBtn" onClick={this.handleFalseButton.bind(this)}>
             False
-          </button> */}
+          </button>
           <br/>
           <button>Add Plant</button>
       </form>

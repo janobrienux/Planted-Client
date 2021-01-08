@@ -1,23 +1,22 @@
 import React, {Component} from 'react';
 import './App.css';
-import Auth from './components/auth/Auth';
-import PlantsCreate from './components/plants/PlantsCreate';
+import { BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
+import {History} from 'history'
 
-type AppState = {
-  token: string,
+import Home from './components/home/Home'
+import Auth from './components/auth/Auth'
+import PlantIndex from './components/plants/PlantsIndex'
+
+//import UserPlants from './components/plants/PlantsDisplay';
+type Props = {
+  history: History
 }
-interface Props {
-  token: string | null
-}
-export default class App extends Component<{}, Props, AppState> {
-  constructor(props:AppState) {
-    super(props);
-    this.state = {
-      token: localStorage.getItem('token') ? localStorage.getItem('token'): ''
-    }
-    console.log(this.state.token)
+
+
+export default class App extends Component<Props> {
+  state = {
+    token: ""
   }
-
   componentDidMount = () => {
     if(localStorage.getItem('token')) {
       this.setState({
@@ -43,8 +42,32 @@ clearToken = ()=> {
   render() {
 return (
   <div className='app'>
-    <Auth updateToken={this.updateToken.bind(this)}/>
-    <PlantsCreate token={this.state.token}/>
+
+    <Switch>
+              <Route exact path="/">
+               <Auth updateToken={this.updateToken} history={this.props.history}/>
+              </Route>
+              <Route exact path="/PlantIndex">
+                {this.state.token !== null ? (
+                  <PlantIndex
+                    // plantCreate={this.props.plantCreate}
+                    updateToken={this.updateToken}
+                    clearToken={this.clearToken}
+                    // fetchPlants={this.props.fetchPlants}
+                    token={this.state.token}
+                  />
+                ) : (
+                  <Redirect to="/" />
+                )}
+              </Route>
+          </Switch>
+      {/* <Home clearToken={this.clearToken.bind(this)} updateToken={this.updateToken.bind(this)}
+      token={this.state.token}  
+      // plantCreate={this.props.plantCreate} fetchPlants={this.props.fetchPlants}
+     /> */}
+   
+    {/* <Auth updateToken={this.updateToken.bind(this)}/> */}
+
   </div>
 )
   }

@@ -1,4 +1,5 @@
 import  { Component } from 'react';
+import {History} from 'history'
 // import styled from 'styled-components';
 
 // const Form = styled.form`
@@ -31,6 +32,7 @@ type SignUpState = {
 
 interface Props  {
   updateToken: (token: string) => void
+  history:History
 }
 export default class SignUp extends Component<Props, SignUpState> {
 constructor(props: Props) {
@@ -78,6 +80,7 @@ handleSubmit = (e: React.SyntheticEvent) => {
   .then(res => res.json())
   .then(data => {
     this.props.updateToken(data.token)
+    this.props.history.push('/PlantIndex')
     console.log('submit data', data)
     console.log('data.user', data.user)
   });
