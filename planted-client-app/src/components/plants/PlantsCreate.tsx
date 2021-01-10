@@ -1,6 +1,10 @@
 import { Component, MouseEvent } from "react";
 import Button from '@material-ui/core/Button';
+import './plantCreate.css'
 // import IconButton from '@material-ui/core/IconButton';
+import {
+  Dialog, TextField, DialogContent, 
+} from '@material-ui/core';
 
 type PlantState = {
   plantName: string;
@@ -9,6 +13,7 @@ type PlantState = {
   waterFrequency: string;
   lastWatering: string;
   isThriving: boolean;
+  handleopen: boolean,
 };
 
 interface Props {
@@ -27,6 +32,7 @@ export default class PlantCreate extends Component<Props, PlantState> {
       waterFrequency: "",
       lastWatering: "",
       isThriving: true,
+      handleopen: true,
     };
   }
   
@@ -43,14 +49,6 @@ export default class PlantCreate extends Component<Props, PlantState> {
      plantData.append('isThriving',  JSON.stringify(this.state.isThriving))
     
     const url: string = "http://localhost:4000/plants/create";
-    // const bodyObj: PlantState = {
-    //   plantName,
-    //   plantImg,
-    //   temperature,
-    //   waterFrequency,
-    //   lastWatering,
-    //   isThriving,
-    // };
     fetch(url, {
       method: "POST",
       body: plantData,
@@ -73,6 +71,24 @@ export default class PlantCreate extends Component<Props, PlantState> {
       });
   };
 
+  handleOpen = () => {
+    this.setState({
+        handleopen: true,
+    });
+};
+
+handleClose = () => {
+    this.setState({
+        handleopen: false,
+    });
+};
+
+
+
+
+
+
+
   handleTrueButton(e: MouseEvent) {
     e.preventDefault();
     this.setState({ isThriving: true })
@@ -92,9 +108,20 @@ export default class PlantCreate extends Component<Props, PlantState> {
 
   render() {
     return (
+
+
+
+
+
+
+
+      
       <div>
+          <Button onClick={this.handleOpen} id="CreateButton" variant="outlined">Add a new plant</Button>
+          <Dialog open={this.state.handleopen} onClose={this.handleClose}>
         <h1>Add a new plant</h1>
         <form onSubmit={this.handleSubmit}  >
+        <DialogContent id="Register">
           <input
             placeholder="plant name"
             value={this.state.plantName}
@@ -103,25 +130,17 @@ export default class PlantCreate extends Component<Props, PlantState> {
           <br />
           <input
         accept="image/*"
-        className=''
+        className='imgInput'
         id="contained-button-file"
         onChange={this.singleFileChangedHandler}
         multiple
         type="file"
       />
-      <label htmlFor="contained-button-file">
+      {/* <label htmlFor="contained-button-file"> */}
         {/* <Button variant="contained" color="primary" component="span">
           Upload
         </Button> */}
-      </label>
-          {/* <input
-            placeholder="plant image"
-            value={this.state.file}
-            onChange={this.singleFileChangedHandler}
-            // onChange=
-            // {(e: React.FormEvent<HTMLInputElement>)
-            //    => this.setState({ file: e.currentTarget.value })}
-          /> */}
+      {/* </label> */}
           <br />
           <input
             type="temperature"
@@ -147,17 +166,17 @@ export default class PlantCreate extends Component<Props, PlantState> {
           />
           <br />
           <h3>Is your plant thriving?</h3>
-
-
-          <button className="trueBtn" onClick={this.handleTrueButton.bind(this)}>
+          <button className="btn" onClick={this.handleTrueButton.bind(this)}>
             True
           </button>
-          <button className="falseBtn" onClick={this.handleFalseButton.bind(this)}>
+          <button className="btn" onClick={this.handleFalseButton.bind(this)}>
             False
           </button>
           <br/>
-          <button>Add Plant</button>
+          <button className="btn">Add Plant</button>
+          </DialogContent>
       </form>
+      </Dialog>
       </div>
     );
   }
