@@ -4,15 +4,16 @@ import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
 import Home from "./components/home/Home";
 import Auth from "./components/auth/Auth";
+import AppBar from './components//home/AppBar'
+import Navigation from './components/navigation/Navigation'
 // import PlantIndex from './components/plants/PlantsIndex'
 // import PlantCard from './components/plants/PlantCard'
 
 //import UserPlants from './components/plants/PlantsDisplay';
 
-type Props = {
-};
 
-export default class App extends Component<Props> {
+
+export default class App extends Component {
   state = {
     token: "",
   };
@@ -42,27 +43,10 @@ export default class App extends Component<Props> {
     return (
       <div className="app">
         <Router>
-          <Switch>
-            <Route exact path="/">
-              <Auth updateToken={this.updateToken} />
-            </Route>
-            <Link to="/PlantsIndex">
-              <Home token={this.state.token} updateToken={this.updateToken} />
-            </Link>
-            {/* <Route exact path="/PlantIndex">
-                {this.state.token !== null ? (
-                  <PlantIndex
-                    // plantCreate={this.props.plantCreate}
-                    updateToken={this.updateToken}
-                    clearToken={this.clearToken}
-                    // fetchPlants={this.props.fetchPlants}
-                    token={this.state.token}
-                  />
-                ) : (
-                  <Redirect to="/" />
-                )}
-              </Route> */}
-          </Switch>
+
+          
+              <Home clearToken={this.clearToken.bind(this)} plantEdit={this.props}  token={this.state.token} updateToken={this.updateToken} /> 
+        
         </Router>
 
         {/* <Home clearToken={this.clearToken.bind(this)} updateToken={this.updateToken.bind(this)}
