@@ -2,7 +2,7 @@ import { Component } from "react";
 
 import { Card } from "@material-ui/core/";
 import CommentCreate from "../comments/CommentCreate";
-// import CommentDisplay from "../comments/CommentsDisplay";
+import CommentDisplay from "../comments/CommentsDisplay";
 import "./Dashboard.css";
 interface Props {
   token: string;
@@ -61,9 +61,9 @@ export default class AllPlants extends Component<Props, State> {
             </Card>
 
             <CommentCreate id={plant.id} token={this.props.token} />
+            <CommentDisplay id={plant.id} token={this.props.token} />
           </div>
         ))}
-        {/* <CommentDisplay id={plant.id} token={this.props.token} /> */}
       </div>
     );
   }

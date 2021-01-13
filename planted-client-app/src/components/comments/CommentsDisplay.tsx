@@ -6,19 +6,19 @@ type Props = {
 };
 
 type State = {
-  id: number;
+  comment: [];
 };
 
 export default class CommentPost extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      id: this.props.id,
+      comment: [],
     };
   }
 
   fetchComments = () => {
-    fetch(`http://localhost:4000/comments/comments/${this.state.id}`, {
+    fetch(`http://localhost:4000/comments/comments/${this.props.id}`, {
       method: "GET",
       headers: new Headers({
         "Content-Type": "application/json",
@@ -28,7 +28,9 @@ export default class CommentPost extends Component<Props, State> {
       .then((res) => res.json())
       .then((data) => {
         console.log("response", data);
-        this.setState({});
+        this.setState({
+          comment: data,
+        });
       });
   };
 
