@@ -1,7 +1,6 @@
 import { Component } from "react";
 import { Button, TextField, Dialog, DialogActions, DialogContent, DialogTitle } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
-import "./Register.css";
 
 interface LoginProps {
   setToken: (token: string) => void;
@@ -105,9 +104,7 @@ export default class Login extends Component<LoginProps, LoginState> {
             />
           </DialogContent>
           <DialogActions id="Loginbtn">
-            <Button onClick={this.handleSubmit} id="btn">
-              LOGIN
-            </Button>
+            <Button onClick={this.handleSubmit}>LOGIN</Button>
             {/* <Alert onClose={() => {}}>This is a success alert — check it out!</Alert>
         <Alert
           action={

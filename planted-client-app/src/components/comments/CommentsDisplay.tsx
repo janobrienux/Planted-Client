@@ -6,14 +6,14 @@ type Props = {
 };
 
 type State = {
-  comment: [];
+  comments: [];
 };
 
 export default class CommentPost extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      comment: [],
+      comments: [],
     };
   }
 
@@ -27,9 +27,8 @@ export default class CommentPost extends Component<Props, State> {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("response", data);
         this.setState({
-          comment: data,
+          comments: data.comments,
         });
       });
   };
@@ -41,7 +40,17 @@ export default class CommentPost extends Component<Props, State> {
   render() {
     return (
       <div>
-        <h1>Hello!</h1>
+        {this.state.comments.map((comment: any, index: any) => {
+          return (
+            <div>
+              <ul>
+                <li>{comment.userName}</li>
+                <li>{comment.date}</li>
+                <li>{comment.entry}</li>
+              </ul>
+            </div>
+          );
+        })}
       </div>
     );
   }

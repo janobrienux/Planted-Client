@@ -3,6 +3,7 @@ import { Component } from "react";
 import { Card } from "@material-ui/core/";
 import CommentCreate from "../comments/CommentCreate";
 import CommentDisplay from "../comments/CommentsDisplay";
+import { Row } from "antd";
 import "./Dashboard.css";
 interface Props {
   token: string;
@@ -40,29 +41,32 @@ export default class AllPlants extends Component<Props, State> {
 
   componentDidMount() {
     this.fetchAllPlants();
+    // this.fetchComments();
   }
 
   render() {
     return (
-      <div>
-        <h1>TEST</h1>
+      <div className="row">
+        <h1>Community Plants</h1>
         {this.state.allPlants.map((plant: any, index: any) => (
-          <div>
-            <Card className="plantCard" key={plant.id}>
-              <li className="plantName">{plant.plantName}</li>
+          <Row className="row">
+            <div className="column">
+              <Card className="plantCard" key={plant.id}>
+                <li className="plantName">{plant.plantName}</li>
 
-              <li>
-                <img className="cardImg" src={plant.plantImg} alt="plant" />
-              </li>
-              <li>Temperature: {plant.temperature}</li>
-              <li>Water Frequency: {plant.waterFrequency}</li>
-              <li>Last Watering: {plant.lastWatering}</li>
-              <li>{plant.isThriving}</li>
-            </Card>
+                <li>
+                  <img className="cardImg" src={plant.plantImg} alt="plant" />
+                </li>
+                <li>Temperature: {plant.temperature}</li>
+                <li>Water Frequency: {plant.waterFrequency}</li>
+                <li>Last Watering: {plant.lastWatering}</li>
+                <li>{plant.isThriving}</li>
+                <CommentCreate id={plant.id} token={this.props.token} />
+              </Card>
 
-            <CommentCreate id={plant.id} token={this.props.token} />
-            <CommentDisplay id={plant.id} token={this.props.token} />
-          </div>
+              <CommentDisplay id={plant.id} token={this.props.token} />
+            </div>
+          </Row>
         ))}
       </div>
     );

@@ -1,9 +1,9 @@
 import { Component } from "react";
 
 import React from "react";
-//Reactstrap
+
 import { Form, FormGroup, Modal, ModalHeader, ModalBody } from "reactstrap";
-//Material UI
+
 import TextField from "@material-ui/core/TextField";
 import ClearIcon from "@material-ui/icons/Clear";
 

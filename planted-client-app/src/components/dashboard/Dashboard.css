@@ -1,6 +1,12 @@
 @import "https://fonts.googleapis.com/css?family=Dosis|Roboto:300,400";
 @import url("https://fonts.googleapis.com/css2?family=Dosis:wght@500&display=swap");
 
+h1 {
+  text-align: center;
+  font-size: 60px;
+  padding: 4%;
+}
+
 .plantCard {
   display: flex;
   flex-direction: column;
@@ -69,4 +75,12 @@
   border: 1px solid #87613d;
   cursor: pointer;
   margin-bottom: 20px;
+}
+.column {
+  flex-basis: 100%;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }

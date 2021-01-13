@@ -1,6 +1,5 @@
 import { Component } from "react";
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField } from "@material-ui/core";
-import "./Register.css";
 
 type SignUpState = {
   firstName: string;

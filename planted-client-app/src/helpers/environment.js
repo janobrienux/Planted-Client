@@ -1,10 +1,10 @@
 let APIURL = "";
 switch (window.location.hostname) {
   case "localhost" || "127.0.0.1":
-    APIURL = "http://localhost:4040";
+    APIURL = "http://localhost:3000";
     break;
-  case "beeshop-client.herokuapp.com":
-    APIURL = "https://wth-beeshop-server.herokuapp.com";
+  case "jo-plantedapp.herokuapp.com":
+    APIURL = "https://jo-plantedapp.herokuapp.com";
     break;
   default:
     APIURL = null;

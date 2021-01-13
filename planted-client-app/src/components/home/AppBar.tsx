@@ -4,7 +4,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Typography from "@material-ui/core/Typography";
-import logo from "../../assets/Planted.png";
+
 import "./Auth.css";
 
 import Login from "../auth/Login";
@@ -71,9 +71,7 @@ export default class TopBar extends React.Component<Props, State> {
             </ButtonGroup>
           </Toolbar>
         </AppBar>
-        <Typography id="CellarText" variant="h2">
-          <img src={logo} id="logo" alt="Logo" />
-        </Typography>
+        <Typography id="CellarText" variant="h2"></Typography>
       </div>
     );
   }
