@@ -1,8 +1,8 @@
 import { Component, MouseEvent } from "react";
 import Button from "@material-ui/core/Button";
 import "./plantCreate.css";
-// import IconButton from '@material-ui/core/IconButton';
-import { Dialog, TextField, DialogContent, DialogActions } from "@material-ui/core";
+
+import { Dialog, DialogContent, DialogActions } from "@material-ui/core";
 
 type PlantState = {
   plantName: string;
@@ -17,7 +17,7 @@ type PlantState = {
 interface Props {
   // plantCreate: any,
   token: string | null;
-  fetchPlants:()=> void
+  fetchPlants: () => void;
 }
 
 export default class PlantCreate extends Component<Props, PlantState> {
@@ -30,7 +30,7 @@ export default class PlantCreate extends Component<Props, PlantState> {
       waterFrequency: "",
       lastWatering: "",
       isThriving: true,
-      handleopen: true,
+      handleopen: false,
     };
   }
 
@@ -100,68 +100,66 @@ export default class PlantCreate extends Component<Props, PlantState> {
   render() {
     return (
       <div>
-        <Button onClick={this.handleOpen} id="CreateButton" variant="outlined">
-          Add a new plant
-        </Button>
+        <button className="btn" onClick={this.handleOpen}>
+          Add a plant!
+        </button>
         <Dialog open={this.state.handleopen} onClose={this.handleClose}>
           <h1>Add a new plant</h1>
-            <DialogContent id="register">
-              <input
-                placeholder="plant name"
-                value={this.state.plantName}
-                onChange={(e: any) => this.setState({ plantName: e.currentTarget.value })}
-              />
-              <br />
-              <input
-                accept="image/*"
-                className="imgInput"
-                id="contained-button-file"
-                onChange={this.singleFileChangedHandler}
-                //multiple
-                type="file"
-              />
-              <br />
-              <input
-                type="temperature"
-                placeholder="temperature"
-                value={this.state.temperature}
-                onChange={(e: React.FormEvent<HTMLInputElement>) =>
-                  this.setState({ temperature: e.currentTarget.value })
-                }
-              />
-              <br />
-              <input
-                type="waterFrequency"
-                placeholder="waterFrequency"
-                value={this.state.waterFrequency}
-                onChange={(e: React.FormEvent<HTMLInputElement>) =>
-                  this.setState({ waterFrequency: e.currentTarget.value })
-                }
-              />
-              <br />
-              <input
-                type="lastWatering"
-                placeholder="lastWatering"
-                value={this.state.lastWatering}
-                onChange={(e: React.FormEvent<HTMLInputElement>) =>
-                  this.setState({ lastWatering: e.currentTarget.value })
-                }
-              />
-              <br />
-              <h3>Is your plant thriving?</h3>
-              <button className="btn" onClick={this.handleTrueButton.bind(this)}>
-                True
-              </button>
-              <button className="btn" onClick={this.handleFalseButton.bind(this)}>
-                False
-              </button>
-              <br />
-            </DialogContent>
-            <DialogActions id="Createbtn">
-              <Button onClick={this.handleSubmit} id="btn">
-                Add Plant
-              </Button>
-            </DialogActions>
+          <DialogContent id="register">
+            <input
+              placeholder="plant name"
+              value={this.state.plantName}
+              onChange={(e: any) => this.setState({ plantName: e.currentTarget.value })}
+            />
+            <br />
+            <input
+              accept="image/*"
+              className="imgInput"
+              id="contained-button-file"
+              onChange={this.singleFileChangedHandler}
+              //multiple
+              type="file"
+            />
+            <br />
+            <input
+              type="temperature"
+              placeholder="temperature"
+              value={this.state.temperature}
+              onChange={(e: React.FormEvent<HTMLInputElement>) => this.setState({ temperature: e.currentTarget.value })}
+            />
+            <br />
+            <input
+              type="waterFrequency"
+              placeholder="waterFrequency"
+              value={this.state.waterFrequency}
+              onChange={(e: React.FormEvent<HTMLInputElement>) =>
+                this.setState({ waterFrequency: e.currentTarget.value })
+              }
+            />
+            <br />
+            <input
+              type="lastWatering"
+              placeholder="lastWatering"
+              value={this.state.lastWatering}
+              onChange={(e: React.FormEvent<HTMLInputElement>) =>
+                this.setState({ lastWatering: e.currentTarget.value })
+              }
+            />
+            <br />
+            <h3>Is your plant thriving?</h3>
+            <button className="btn" onClick={this.handleTrueButton.bind(this)}>
+              True
+            </button>
+            <button className="btn" onClick={this.handleFalseButton.bind(this)}>
+              False
+            </button>
+            <br />
+          </DialogContent>
+          <DialogActions id="Createbtn">
+            <Button onClick={this.handleSubmit} id="btn">
+              Add Plant
+            </Button>
+          </DialogActions>
         </Dialog>
       </div>
     );

@@ -9,6 +9,7 @@
   box-shadow: 15px 15px 27px #e1e1e3, -15px -15px 27px #ffffff;
   margin: 100px;
   overflow: hidden;
+  list-style-type: none;
 }
 
 .plantName {
@@ -19,6 +20,7 @@
   line-height: 0px;
   transform: translateY(40px);
   transition: all 0.7s;
+  list-style-type: none;
 }
 
 .cardImg {
@@ -51,7 +53,7 @@
   font-size: 40px;
   letter-spacing: 3px;
   list-style-type: none;
-  padding-bottom: 50px;
+  padding-bottom: 70px;
 }
 
 .cardbtn {

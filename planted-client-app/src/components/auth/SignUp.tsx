@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField } from "@material-ui/core";
+import "./Register.css";
 
 type SignUpState = {
   firstName: string;
@@ -110,15 +111,13 @@ export default class SignUp extends Component<Props, SignUpState> {
   render() {
     return (
       <div>
-        <div>
-        </div>
-        <h1> Hello, Friend! One step closer to channeling your green thumb</h1>
         <Button onClick={this.handleOpen} id="RegisterButton" variant="outlined">
           SIGN UP
         </Button>
         <Dialog open={this.state.handleopen} onClose={this.handleClose}>
-          <DialogTitle id="dialogTitle"></DialogTitle>
-          <DialogContent id="Register">
+          <h2> Hello, Friend! One step closer to channeling your green thumb</h2>
+
+          <DialogContent id="RegisterIn">
             <TextField
               autoFocus
               margin="dense"
@@ -136,6 +135,7 @@ export default class SignUp extends Component<Props, SignUpState> {
               onChange={(e) => this.setLastName(e.target.value)}
             />
             <TextField
+              id="text"
               autoFocus
               margin="dense"
               label="Email"
@@ -144,6 +144,7 @@ export default class SignUp extends Component<Props, SignUpState> {
               onChange={(e) => this.setEmail(e.target.value)}
             />
             <TextField
+              id="text"
               autoFocus
               margin="dense"
               label="Password"
@@ -152,6 +153,7 @@ export default class SignUp extends Component<Props, SignUpState> {
               onChange={(e) => this.setPassword(e.target.value)}
             />
             <TextField
+              id="text"
               autoFocus
               margin="dense"
               label="User/Admin"
@@ -162,7 +164,7 @@ export default class SignUp extends Component<Props, SignUpState> {
           </DialogContent>
           <DialogActions id="Registerbtn">
             <Button onClick={this.handleSubmit} id="btn">
-              <strong>Sign Up</strong>
+              Sign Up
             </Button>
           </DialogActions>
         </Dialog>

@@ -1,17 +1,9 @@
 import React, { Component } from "react";
 import "./App.css";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 
 import Home from "./components/home/Home";
 import Auth from "./components/auth/Auth";
-import AppBar from './components//home/AppBar'
-import Navigation from './components/navigation/Navigation'
-// import PlantIndex from './components/plants/PlantsIndex'
-// import PlantCard from './components/plants/PlantCard'
-
-//import UserPlants from './components/plants/PlantsDisplay';
-
-
 
 export default class App extends Component {
   state = {
@@ -39,23 +31,26 @@ export default class App extends Component {
     });
   };
 
-  render() {
-    return (
-      <div className="app">
+  protectedViews = () => {
+    return !this.state.token ? (
+      <div>
         <Router>
-
-          
-              <Home clearToken={this.clearToken.bind(this)} plantEdit={this.props}  token={this.state.token} updateToken={this.updateToken} /> 
-        
+          <Auth updateToken={this.updateToken.bind(this)} />
         </Router>
-
-        {/* <Home clearToken={this.clearToken.bind(this)} updateToken={this.updateToken.bind(this)}
-      token={this.state.token}  
-      // plantCreate={this.props.plantCreate} fetchPlants={this.props.fetchPlants}
-     /> */}
-
-        {/* <Auth updateToken={this.updateToken.bind(this)}/> */}
       </div>
+    ) : (
+      <>
+        <Home
+          clearToken={this.clearToken.bind(this)}
+          plantEdit={this.props}
+          token={this.state.token}
+          updateToken={this.updateToken}
+        />
+      </>
     );
+  };
+
+  render() {
+    return <div className="app">{this.protectedViews()}</div>;
   }
 }

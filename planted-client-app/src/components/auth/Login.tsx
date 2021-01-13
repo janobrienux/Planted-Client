@@ -1,20 +1,18 @@
 import { Component } from "react";
 import { Button, TextField, Dialog, DialogActions, DialogContent, DialogTitle } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
-
-
+import "./Register.css";
 
 interface LoginProps {
   setToken: (token: string) => void;
-  updateToken: (newToken: string) => void
-
+  updateToken: (newToken: string) => void;
 }
 type LoginState = {
   email: string;
   password: string;
   handleopen: boolean;
-  incorrectPassword: boolean,
-  incorrectEmail: boolean,
+  incorrectPassword: boolean;
+  incorrectEmail: boolean;
 };
 
 export default class Login extends Component<LoginProps, LoginState> {
@@ -52,7 +50,7 @@ export default class Login extends Component<LoginProps, LoginState> {
         console.log("data.user", data.user);
         this.props.setToken(data.token);
       });
-      alert('Login Successful!')
+    alert("Login Successful!");
   };
 
   handleOpen = () => {
@@ -110,7 +108,7 @@ export default class Login extends Component<LoginProps, LoginState> {
             <Button onClick={this.handleSubmit} id="btn">
               LOGIN
             </Button>
-               {/* <Alert onClose={() => {}}>This is a success alert — check it out!</Alert>
+            {/* <Alert onClose={() => {}}>This is a success alert — check it out!</Alert>
         <Alert
           action={
             <Button color="inherit" size="small">
@@ -121,7 +119,6 @@ export default class Login extends Component<LoginProps, LoginState> {
         </Alert> */}
           </DialogActions>
         </Dialog>
-
       </div>
     );
   }

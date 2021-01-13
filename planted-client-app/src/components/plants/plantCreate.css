@@ -1,17 +1,16 @@
-@import 'https://fonts.googleapis.com/css?family=Dosis|Roboto:300,400';
+@import "https://fonts.googleapis.com/css?family=Dosis|Roboto:300,400";
 
 #register {
   text-align: center;
-  width: 310px;
-  height: 470px;
-  border-radius: 5px;
-  padding: 30px 20px 0 20px;
-  box-shadow: 0 10px 50px 0 rgba(0, 0, 0, 0.25);
-  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 20em;
+  height: 24em;
+  box-shadow: 15px 15px 27px #e1e1e3, -15px -15px 27px #ffffff;
 }
 
 input {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 100;
   text-transform: uppercase;
   font-size: 12px;
@@ -20,17 +19,15 @@ input {
 }
 
 h1 {
-  font-family: 'Dosis';
+  font-family: "Dosis";
   text-align: center;
   font-size: 25px;
-  text-transform: uppercase;
-  color: #91A687;
+  color: #91a687;
   margin-bottom: 30px;
 }
 h3 {
-  text-transform: uppercase;
-  font-family: 'Dosis';
-  color: #91A687;
+  font-family: "Dosis";
+  color: #91a687;
 }
 
 /* .imgInput {
@@ -44,10 +41,10 @@ h3 {
 
 .btn {
   border: none;
-  background: #91A687;
+  background: #91a687;
   width: 120px;
   height: 25px;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Dosis";
   font-size: 12px;
   color: #fff;
   text-transform: uppercase;
@@ -55,5 +52,4 @@ h3 {
   border: 1px solid #87613d;
   cursor: pointer;
   margin-bottom: 20px;
-
 }

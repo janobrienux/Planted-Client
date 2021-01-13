@@ -1,10 +1,11 @@
 import { Component } from "react";
 
 import PlantsCreate from "./PlantsCreate";
+import { Row, Col } from "antd";
 
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
+import { Card } from "@material-ui/core/";
+
+import "./plantsDisplay.css";
 
 import PlantEdit from "./PlantEdit";
 
@@ -97,58 +98,49 @@ export default class PlantIndex extends Component<Props, State> {
   render() {
     return (
       <div className="plantsDis">
-        <PlantsCreate token={this.props.token} fetchPlants={this.fetchPlants} />
-
-        {this.state.userPlants
-          ? this.state.userPlants.map((plant) => (
-              <ul key={plant.id}>
-                {/* <button onClick={this.updateOn} >
-                {this.state.plantUpdateActive ? 
-        <PlantEdit  plantUpdate={this.state.plantUpdate}
-              updateOff={this.updateOff.bind(this)}
-              token={this.props.token}
-               />
-               : <></>
-               } 
-            </button> */}
-
-                {/* <button onClick={() => {this.plantDelete(plant)}}></button> */}
-                {/* {this.state.plantUpdateActive ? 
-        <PlantEdit plantId={plant.id} plantUpdate={this.state.plantUpdate}
-              updateOff={this.updateOff.bind(this)}
-              token={this.props.token}
-               />
-               : <></>
-               } */}
-                <Card>
-                  <li>{plant.plantName}</li>
-                  <li>
-                    <img width="140px" height="140px" src={plant.plantImg} alt="plant" />
-                  </li>
-                  <li>Temperature: {plant.temperature}</li>
-                  <li>Water Frequency: {plant.waterFrequency}</li>
-                  <li>Last Watering: {plant.lastWatering}</li>
-                  <li>{plant.isThriving}</li>
-                  <button
-                    onClick={() => {
-                      this.editUpdateMyPlants(plant);
-                      this.updateOn();
-                    }}
-                  >
-                    Update
-                  </button>
-                  <button
-                    onClick={() => {
-                      this.plantDelete(plant);
-                    }}
-                  >
-                    Delete
-                  </button>
-                </Card>
-              </ul>
-            ))
-          : undefined}
         <h1>Hello</h1>
+
+        <PlantsCreate token={this.props.token} fetchPlants={this.fetchPlants} />
+        {/* <Grid container direction="row"> */}
+        <Row gutter={[32, 32]}>
+          {this.state.userPlants
+            ? this.state.userPlants.map((plant) => (
+                <Col span={6}>
+                  <ul key={plant.id}>
+                    <Card className="plantCard">
+                      <li className="plantName">{plant.plantName}</li>
+
+                      <li>
+                        <img className="cardImg" src={plant.plantImg} alt="plant" />
+                      </li>
+                      <li>Temperature: {plant.temperature}</li>
+                      <li>Water Frequency: {plant.waterFrequency}</li>
+                      <li>Last Watering: {plant.lastWatering}</li>
+                      <li>{plant.isThriving}</li>
+                      <button
+                        className="cardbtn"
+                        onClick={() => {
+                          this.editUpdateMyPlants(plant);
+                          this.updateOn();
+                        }}
+                      >
+                        Update
+                      </button>
+                      <button
+                        className="cardbtn"
+                        onClick={() => {
+                          this.plantDelete(plant);
+                        }}
+                      >
+                        Delete
+                      </button>
+                    </Card>
+                  </ul>
+                </Col>
+              ))
+            : undefined}
+        </Row>
+        {/* </Grid> */}
         {/* <button onClick={this.editUpdateMyPlants} >
                 {this.state.plantUpdateActive ? 
                   <PlantEdit plantId={this.plant.id.bind(this)} plantUpdate={this.state.plantUpdate}
