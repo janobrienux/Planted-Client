@@ -48,7 +48,7 @@ export default class Login extends Component<LoginProps, LoginState> {
         console.log("data.user", data.user);
         this.props.setToken(data.token);
       });
-    alert("Login Successful!");
+    // alert("Login Successful!");
   };
 
   handleOpen = () => {

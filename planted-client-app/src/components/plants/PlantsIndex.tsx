@@ -10,6 +10,8 @@ import "./plantsDisplay.css";
 
 import PlantEdit from "./PlantEdit";
 
+import APIURL from "../../helpers/environment";
+
 // import "./plantsDisplay.css";
 
 interface Props {
@@ -46,7 +48,7 @@ export default class PlantIndex extends Component<Props, State> {
   }
 
   fetchPlants = () => {
-    fetch("http://localhost:4000/plants/userplants", {
+    fetch(`${APIURL}/plants/userplants`, {
       method: "GET",
       headers: new Headers({
         "Content-Type": "application/json",
@@ -65,7 +67,7 @@ export default class PlantIndex extends Component<Props, State> {
   };
 
   plantDelete = (plant: any) => {
-    fetch(`http://localhost:4000/plants/${plant.id}`, {
+    fetch(`${APIURL}/plants/${plant.id}`, {
       method: "DELETE",
       headers: new Headers({
         "Content-Type": "application/json",
