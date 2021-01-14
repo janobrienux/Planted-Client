@@ -1,0 +1,32 @@
+@import "https://fonts.googleapis.com/css?family=Dosis|Roboto:300,400";
+body {
+  display: flex;
+  justify-content: center;
+}
+h2 {
+  font-family: "Dosis";
+  font-size: 35px;
+  color: #91a687;
+}
+#RegisterButton,
+#LoginButton {
+  border: none;
+  background: #91a687;
+  width: 90px;
+  height: 40px;
+  font-family: "Dosis";
+  font-size: 12px;
+  color: #fff;
+  text-transform: uppercase;
+  border-radius: 4px;
+  border: 1px solid #87613d;
+  cursor: pointer;
+}
+
+#RegisterIn {
+  color: #91a687;
+  font-family: "Dosis";
+}
+/* #logo {
+  margin-left: 32%;
+} */
