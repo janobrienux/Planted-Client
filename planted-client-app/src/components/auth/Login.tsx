@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { Button, TextField, Dialog, DialogActions, DialogContent, DialogTitle } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
-
+import APIURL from "../../helpers/environment";
 interface LoginProps {
   setToken: (token: string) => void;
   updateToken: (newToken: string) => void;
@@ -30,13 +30,12 @@ export default class Login extends Component<LoginProps, LoginState> {
     e.preventDefault();
     console.log(this.state.email);
 
-    const url: string = "http://localhost:4000/user/login";
     const bodyObj: object = {
       email: this.state.email,
       password: this.state.password,
     };
 
-    fetch(url, {
+    fetch(`${APIURL}/user/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

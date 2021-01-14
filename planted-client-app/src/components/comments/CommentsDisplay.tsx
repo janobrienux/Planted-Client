@@ -1,6 +1,6 @@
 import { Component } from "react";
 // import Card from "@material-ui/core";
-
+import APIURL from "../../helpers/environment";
 import "./Comments.css";
 
 type Props = {
@@ -21,7 +21,7 @@ export default class CommentPost extends Component<Props, State> {
   }
 
   fetchComments = () => {
-    fetch(`http://localhost:4000/comments/comments/${this.props.id}`, {
+    fetch(`${APIURL}/comments/comments/${this.props.id}`, {
       method: "GET",
       headers: new Headers({
         "Content-Type": "application/json",
@@ -41,7 +41,7 @@ export default class CommentPost extends Component<Props, State> {
   }
 
   commentDelete = (comment: any) => {
-    fetch(`http://localhost:4000/comments/${comment.id}`, {
+    fetch(`${APIURL}/comments/${comment.id}`, {
       method: "DELETE",
       headers: new Headers({
         "Content-Type": "application/json",

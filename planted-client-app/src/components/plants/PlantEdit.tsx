@@ -8,6 +8,7 @@ import TextField from "@material-ui/core/TextField";
 import ClearIcon from "@material-ui/icons/Clear";
 
 import IconButton from "@material-ui/core/IconButton/IconButton";
+import APIURL from "../../helpers/environment";
 
 type Props = {
   plantUpdate: any;
@@ -38,7 +39,7 @@ export default class PlantEdit extends Component<Props, State> {
 
   handlePlantUpdate = (e: any) => {
     e.preventDefault();
-    fetch(`http://localhost:4000/plants/update/${this.props.plantUpdate.id}`, {
+    fetch(`${APIURL}/plants/update/${this.props.plantUpdate.id}`, {
       method: "PUT",
       headers: new Headers({
         "Content-Type": "application/json",

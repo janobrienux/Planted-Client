@@ -4,6 +4,8 @@ import "./plantCreate.css";
 
 import { Dialog, DialogContent, DialogActions } from "@material-ui/core";
 
+import APIURL from "../../helpers/environment";
+
 type PlantState = {
   plantName: string;
   plantImg: string;
@@ -46,7 +48,7 @@ export default class PlantCreate extends Component<Props, PlantState> {
     plantData.append("lastWatering", this.state.lastWatering);
     plantData.append("isThriving", JSON.stringify(this.state.isThriving));
 
-    const url: string = "http://localhost:4000/plants/create";
+    const url: string = `${APIURL}/plants/create`;
     fetch(url, {
       method: "POST",
       body: plantData,

@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField } from "@material-ui/core";
+import APIURL from "../../helpers/environment";
 
 type SignUpState = {
   firstName: string;
@@ -39,7 +40,7 @@ export default class SignUp extends Component<Props, SignUpState> {
     const userRole: string = this.state.userRole;
 
     // console.log('this.state.firstName', firstName);
-    const url: string = "http://localhost:4000/user/register";
+    const url: string = `${APIURL}/user/register`;
     const bodyObj: SignUpState = {
       firstName,
       lastName,

@@ -2,6 +2,7 @@ import { Component } from "react";
 import Button from "@material-ui/core/Button";
 
 import { Dialog, DialogContent, DialogActions } from "@material-ui/core";
+import APIURL from "../../helpers/environment";
 
 type Props = {
   token: string;
@@ -37,7 +38,7 @@ export default class CommentCreate extends Component<Props, State> {
     // const plantId: number = this.state.plantId;
 
     // console.log('this.state.firstName', firstName);
-    const url: string = `http://localhost:4000/comments/create/${this.state.plantId}`;
+    const url: string = `${APIURL}/comments/create/${this.state.plantId}`;
     // const bodyObj: {
     //   userName,
     //   date,

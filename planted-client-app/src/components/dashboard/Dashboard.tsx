@@ -5,6 +5,7 @@ import CommentCreate from "../comments/CommentCreate";
 import CommentDisplay from "../comments/CommentsDisplay";
 import { Row } from "antd";
 import "./Dashboard.css";
+import APIURL from "../../helpers/environment";
 interface Props {
   token: string;
 }
@@ -22,7 +23,7 @@ export default class AllPlants extends Component<Props, State> {
   }
 
   fetchAllPlants = () => {
-    fetch("http://localhost:4000/plants/plants", {
+    fetch(`${APIURL}/plants/plants`, {
       method: "GET",
       headers: new Headers({
         "Content-type": "application/json",
