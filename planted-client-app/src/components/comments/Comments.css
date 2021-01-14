@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@500&display=swap");
+
+#commentStyl {
+  color: white;
+  max-height: 100px;
+  overflow-y: auto;
+}
+ul li {
+  font-family: Dosis;
+  font-size: large;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#commentCard {
+  margin: 5%;
+}

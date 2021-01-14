@@ -62,9 +62,8 @@ export default class AllPlants extends Component<Props, State> {
                 <li>Last Watering: {plant.lastWatering}</li>
                 <li>{plant.isThriving}</li>
                 <CommentCreate id={plant.id} token={this.props.token} />
+                <CommentDisplay id={plant.id} token={this.props.token} />
               </Card>
-
-              <CommentDisplay id={plant.id} token={this.props.token} />
             </div>
           </Row>
         ))}

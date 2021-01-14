@@ -1,4 +1,7 @@
 import { Component } from "react";
+// import Card from "@material-ui/core";
+
+import "./Comments.css";
 
 type Props = {
   token: string;
@@ -37,16 +40,34 @@ export default class CommentPost extends Component<Props, State> {
     this.fetchComments();
   }
 
+  commentDelete = (comment: any) => {
+    fetch(`http://localhost:4000/comments/${comment.id}`, {
+      method: "DELETE",
+      headers: new Headers({
+        "Content-Type": "application/json",
+        Authorization: this.props.token,
+      }),
+    }).then(() => this.fetchComments());
+  };
+
   render() {
     return (
       <div>
         {this.state.comments.map((comment: any, index: any) => {
           return (
-            <div>
+            <div id="commentStyl">
               <ul>
                 <li>{comment.userName}</li>
                 <li>{comment.date}</li>
                 <li>{comment.entry}</li>
+                <button
+                  className="cardbtn"
+                  onClick={() => {
+                    this.commentDelete(comment);
+                  }}
+                >
+                  Delete
+                </button>
               </ul>
             </div>
           );
