@@ -1,5 +1,5 @@
 
-=======
+
 Overview 
 
 Planted is a web application that makes taking care of your plants easier! It provides a way to track the plants you have at home by adding them into the application, managing and updating their care, as well as a community to connect with other plant enthusiasts. Planted will require users to create an account in order to manage their plants. The goal of Planted is to help users track the care of their plants as well as gain insight from others who can help them keep their plants thriving. Planted is supposed to make having plants fun and accessible for everyone! 
