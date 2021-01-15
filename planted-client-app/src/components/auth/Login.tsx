@@ -29,13 +29,13 @@ export default class Login extends Component<LoginProps, LoginState> {
   handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
     console.log(this.state.email);
-
+    const url: string = `${APIURL}/user/login`;
     const bodyObj: object = {
       email: this.state.email,
       password: this.state.password,
     };
 
-    fetch(`${APIURL}/user/login`, {
+    fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
