@@ -44,9 +44,9 @@ export default class Login extends Component<LoginProps, LoginState> {
     })
       .then((res) => res.json())
       .then((data) => {
+        this.props.setToken(data.sessionToken);
         console.log("submit data", data);
         console.log("data.user", data.user);
-        this.props.setToken(data.sessionToken);
       });
     // alert("Login Successful!");
   };
