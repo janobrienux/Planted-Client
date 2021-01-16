@@ -63,9 +63,9 @@ export default class SignUp extends Component<Props, SignUpState> {
       .then((res) => res.json())
       .then((data) => {
         this.handleClose();
-        this.props.updateToken(data.token);
         console.log("submit data", data);
         console.log("data.user", data.user);
+        this.props.updateToken(data.token);
       });
     alert("User Registration Successful!");
   };
