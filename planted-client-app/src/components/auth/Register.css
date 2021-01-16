@@ -27,6 +27,13 @@ h2 {
   color: #91a687;
   font-family: "Dosis";
 }
+.discover {
+  display: flex;
+  justify-content: space-around;
+}
+h3 {
+  font-size: 24px;
+}
 /* #logo {
   margin-left: 32%;
 } */

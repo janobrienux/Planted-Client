@@ -29,13 +29,13 @@ export default class Login extends Component<LoginProps, LoginState> {
   handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
     console.log(this.state.email);
-
+    const url: string = `${APIURL}/user/login`;
     const bodyObj: object = {
       email: this.state.email,
       password: this.state.password,
     };
 
-    fetch(`${APIURL}/user/login`, {
+    fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -44,11 +44,11 @@ export default class Login extends Component<LoginProps, LoginState> {
     })
       .then((res) => res.json())
       .then((data) => {
+        this.props.setToken(data.sessionToken);
         console.log("submit data", data);
         console.log("data.user", data.user);
-        this.props.setToken(data.token);
       });
-    alert("Login Successful!");
+    // alert("Login Successful!");
   };
 
   handleOpen = () => {

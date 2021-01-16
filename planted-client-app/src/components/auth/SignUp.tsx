@@ -112,7 +112,7 @@ export default class SignUp extends Component<Props, SignUpState> {
     return (
       <div>
         <Button onClick={this.handleOpen} id="RegisterButton" variant="outlined">
-          SIGN UP
+          GET STARTED
         </Button>
         <Dialog open={this.state.handleopen} onClose={this.handleClose}>
           <h2> Hello, Friend! One step closer to channeling your green thumb</h2>
