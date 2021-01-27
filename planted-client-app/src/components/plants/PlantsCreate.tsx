@@ -47,7 +47,6 @@ export default class PlantCreate extends Component<Props, PlantState> {
     plantData.append("waterFrequency", this.state.waterFrequency);
     plantData.append("lastWatering", this.state.lastWatering);
     plantData.append("isThriving", JSON.stringify(this.state.isThriving));
-    // test
 
     const url: string = `${APIURL}/plants/create`;
     fetch(url, {
