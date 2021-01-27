@@ -48,8 +48,8 @@ export default class PlantCreate extends Component<Props, PlantState> {
     plantData.append("lastWatering", JSON.stringify(this.state.lastWatering));
     plantData.append("isThriving", JSON.stringify(this.state.isThriving));
 
-    const url: string = `${APIURL}/plants/create`;
-    fetch(url, {
+    // const url: string = `${APIURL}/plants/create`;
+    fetch(`${APIURL}/plants/create`, {
       method: "POST",
       headers: new Headers({
         //  "Content-Type": "application/json",
