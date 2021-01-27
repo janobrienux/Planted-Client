@@ -41,21 +41,21 @@ export default class PlantCreate extends Component<Props, PlantState> {
     e.preventDefault();
     //fetch and set value
     const plantData = new FormData();
-    plantData.append("plantName", this.state.plantName);
-    plantData.append("image", this.state.plantImg);
-    plantData.append("temperature", this.state.temperature);
-    plantData.append("waterFrequency", this.state.waterFrequency);
-    plantData.append("lastWatering", this.state.lastWatering);
+    plantData.append("plantName", JSON.stringify(this.state.plantName));
+    plantData.append("image", JSON.stringify(this.state.plantImg));
+    plantData.append("temperature", JSON.stringify(this.state.temperature));
+    plantData.append("waterFrequency", JSON.stringify(this.state.waterFrequency));
+    plantData.append("lastWatering", JSON.stringify(this.state.lastWatering));
     plantData.append("isThriving", JSON.stringify(this.state.isThriving));
 
-    const url: string = `${APIURL}/plants/create/`;
+    const url: string = `${APIURL}/plants/create`;
     fetch(url, {
       method: "POST",
-      body: plantData,
       headers: new Headers({
         //  "Content-Type": "application/json",
         Authorization: `${this.props.token}`,
       }),
+      body: plantData,
     })
       .then((res) => res.json())
       .then((data) => {
