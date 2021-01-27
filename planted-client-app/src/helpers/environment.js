@@ -7,6 +7,9 @@ switch (window.location.hostname) {
   case "planted-client.herokuapp.com":
     APIURL = "https://jo-planted.herokuapp.com";
     break;
+
+  default:
+    APIURL = "";
 }
 
 export default APIURL;
