@@ -51,11 +51,11 @@ export default class PlantCreate extends Component<Props, PlantState> {
     // const url: string = `${APIURL}/plants/create`;
     fetch(`${APIURL}/plants/create`, {
       method: "POST",
+      body: plantData,
       headers: new Headers({
         //  "Content-Type": "application/json",
         Authorization: `${this.props.token}`,
       }),
-      body: plantData,
     })
       .then((res) => res.json())
       .then((data) => {

@@ -1,6 +1,5 @@
 import { Component } from "react";
 import { Button, TextField, Dialog, DialogActions, DialogContent, DialogTitle } from "@material-ui/core";
-import Alert from "@material-ui/lab/Alert";
 import APIURL from "../../helpers/environment";
 interface LoginProps {
   setToken: (token: string) => void;

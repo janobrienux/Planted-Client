@@ -1,7 +1,7 @@
 import { Component } from "react";
 
 import PlantsCreate from "./PlantsCreate";
-import { Row, Col } from "antd";
+
 import logo from "../../assets/Planted.png";
 
 import { Card } from "@material-ui/core/";

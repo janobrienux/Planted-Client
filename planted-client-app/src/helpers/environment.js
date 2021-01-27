@@ -9,7 +9,8 @@ switch (window.location.hostname) {
     break;
 
   default:
-    APIURL = "";
+    alert("url error");
+    break;
 }
 
 export default APIURL;

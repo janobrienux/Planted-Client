@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField } from "@material-ui/core";
+import { Button, Dialog, DialogActions, DialogContent, TextField } from "@material-ui/core";
 import APIURL from "../../helpers/environment";
 
 type SignUpState = {
